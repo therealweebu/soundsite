@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SoundSite.Hubs;
 
 namespace SoundSite
 {
@@ -22,6 +19,7 @@ namespace SoundSite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +36,13 @@ namespace SoundSite
             }
 
             app.UseStaticFiles();
+
+
+            // TODO: finishing adding signalr support, info here: https://blogs.msdn.microsoft.com/webdev/2017/09/14/announcing-signalr-for-asp-net-core-2-0/
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<Chat>("chat");
+            });
 
             app.UseMvc(routes =>
             {
