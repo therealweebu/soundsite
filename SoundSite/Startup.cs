@@ -38,7 +38,8 @@ namespace SoundSite
             app.UseStaticFiles();
 
 
-            // TODO: finishing adding signalr support, info here: https://blogs.msdn.microsoft.com/webdev/2017/09/14/announcing-signalr-for-asp-net-core-2-0/
+            // TODO: finishing adding signalr support, info here: 
+            // https://blogs.msdn.microsoft.com/webdev/2017/09/14/announcing-signalr-for-asp-net-core-2-0/
             app.UseSignalR(routes =>
             {
                 routes.MapHub<Chat>("chat");
