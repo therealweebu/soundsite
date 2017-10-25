@@ -1,0 +1,9 @@
+namespace.soundsite.SoundSite.models
+{
+  public class SoundsModel
+  {
+    public string Name { get; set; }
+    public int LengthMinutes { get; set; }
+    public int LengthSeconds { get; set; }
+  }
+}
